@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>โปรโมชั่น Amway เดือนมิถุนายน–กรกฎาคม</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700;800&family=Kanit:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #2d7a4f;
+    --green-light: #4caf78;
+    --gold: #e8a820;
+    --gold-light: #f5c842;
+    --coral: #e8533a;
+    --teal: #1a8fa0;
+    --pink: #e8547a;
+    --bg: #f7f4ef;
+    --card: #ffffff;
+    --text: #1a1a2e;
+    --muted: #6b7280;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Sarabun', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, #1a2e1a 0%, #2d7a4f 50%, #1a4a6e 100%);
+    padding: 48px 20px 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 240px; height: 240px;
+    border-radius: 50%;
+    background: rgba(232,168,32,0.15);
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: -40px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+  }
+  .hero-badge {
+    display: inline-block;
+    background: var(--gold);
+    color: #1a1a00;
+    font-family: 'Kanit', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 18px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+  }
+  .hero h1 {
+    font-family: 'Kanit', sans-serif;
+    font-size: clamp(28px, 8vw, 48px);
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.15;
+    margin-bottom: 8px;
+  }
+  .hero h1 span { color: var(--gold-light); }
+  .hero-sub {
+    color: rgba(255,255,255,0.75);
+    font-size: 15px;
+    margin-bottom: 28px;
+  }
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .stat {
+    text-align: center;
+  }
+  .stat-num {
+    font-family: 'Kanit', sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--gold-light);
+    display: block;
+  }
+  .stat-label {
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+  }
+
+  /* NAV TABS */
+  .nav-wrap {
+    background: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  }
+  .nav-tabs {
+    display: flex;
+    overflow-x: auto;
+    gap: 0;
+    scrollbar-width: none;
+    padding: 0 12px;
+  }
+  .nav-tabs::-webkit-scrollbar { display: none; }
+  .tab-btn {
+    flex-shrink: 0;
+    padding: 14px 16px;
+    border: none;
+    background: none;
+    font-family: 'Sarabun', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--muted);
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .tab-btn.active {
+    color: var(--green);
+    border-bottom-color: var(--green);
+  }
+  .tab-btn:hover { color: var(--green); }
+
+  /* CONTENT */
+  .content {
+    padding: 20px 16px 40px;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .section { display: none; }
+  .section.active { display: block; }
+
+  /* SECTION HEADER */
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+    padding-top: 4px;
+  }
+  .section-icon {
+    width: 40px; height: 40px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .section-title {
+    font-family: 'Kanit', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  /* PROMO CARD */
+  .promo-card {
+    background: var(--card);
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .promo-card:active { transform: scale(0.98); }
+
+  .card-header {
+    padding: 16px 18px 12px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  .card-brand {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .card-title {
+    font-family: 'Kanit', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.3;
+  }
+  .discount-badge {
+    flex-shrink: 0;
+    background: var(--coral);
+    color: #fff;
+    font-family: 'Kanit', sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: 10px;
+    white-space: nowrap;
+  }
+  .free-badge {
+    background: var(--green);
+  }
+
+  .card-body { padding: 0 18px 16px; }
+
+  .price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  .price-new {
+    font-family: 'Kanit', sans-serif;
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--coral);
+  }
+  .price-old {
+    font-size: 13px;
+    color: var(--muted);
+    text-decoration: line-through;
+  }
+  .price-unit {
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .detail-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .detail-list li {
+    font-size: 13px;
+    color: #444;
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+    line-height: 1.4;
+  }
+  .detail-list li::before {
+    content: '·';
+    color: var(--green);
+    font-size: 18px;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .card-footer {
+    background: #f9f9f9;
+    border-top: 1px solid #f0f0f0;
+    padding: 10px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .period-tag {
+    font-size: 11px;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .period-tag::before { content: '📅'; font-size: 12px; }
+  .apoint-tag {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--teal);
+    background: rgba(26,143,160,0.1);
+    padding: 3px 8px;
+    border-radius: 6px;
+  }
+
+  /* HIGHLIGHT CARD */
+  .highlight-card {
+    background: linear-gradient(135deg, var(--green) 0%, #1a4a6e 100%);
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 16px;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+  }
+  .highlight-card::before {
+    content: '';
+    position: absolute;
+    top: -30px; right: -30px;
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+  }
+  .highlight-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 6px;
+  }
+  .highlight-title {
+    font-family: 'Kanit', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+  .highlight-price {
+    font-family: 'Kanit', sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--gold-light);
+  }
+  .highlight-price span {
+    font-size: 14px;
+    color: rgba(255,255,255,0.7);
+    font-weight: 400;
+  }
+
+  /* FREE GIFT ROW */
+  .gift-row {
+    background: linear-gradient(90deg, #e8f5ef, #f0fdf4);
+    border: 1.5px solid #a7dfbe;
+    border-radius: 12px;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .gift-icon { font-size: 22px; flex-shrink: 0; }
+  .gift-text { font-size: 13px; color: var(--green); font-weight: 600; line-height: 1.3; }
+
+  /* CTA */
+  .cta-section {
+    background: linear-gradient(135deg, #1a2e1a, #2d7a4f);
+    border-radius: 20px;
+    padding: 24px 20px;
+    text-align: center;
+    margin-top: 8px;
+    color: #fff;
+  }
+  .cta-title {
+    font-family: 'Kanit', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .cta-sub { font-size: 14px; color: rgba(255,255,255,0.75); margin-bottom: 18px; }
+  .cta-btn {
+    display: inline-block;
+    background: var(--gold);
+    color: #1a1a00;
+    font-family: 'Kanit', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 12px 32px;
+    border-radius: 50px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .promo-card, .highlight-card {
+    animation: fadeUp 0.4s ease both;
+  }
+  .promo-card:nth-child(2) { animation-delay: 0.05s; }
+  .promo-card:nth-child(3) { animation-delay: 0.1s; }
+  .promo-card:nth-child(4) { animation-delay: 0.15s; }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">⭐ Amway Thailand</div>
+  <h1>โปรโมชั่น<br><span>มิ.ย. – ก.ค. 2569</span></h1>
+  <p class="hero-sub">ดีลพิเศษประจำเดือน คัดมาให้แล้ว 🎁</p>
+  <div class="hero-stats">
+    <div class="stat">
+      <span class="stat-num">12</span>
+      <span class="stat-label">โปรโมชั่น</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">6</span>
+      <span class="stat-label">หมวดสินค้า</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">สูงสุด 24%</span>
+      <span class="stat-label">ส่วนลด</span>
+    </div>
+  </div>
+</div>
+
+<!-- NAV TABS -->
+<div class="nav-wrap">
+  <div class="nav-tabs">
+    <button class="tab-btn active" onclick="showTab('all')">🏠 ทั้งหมด</button>
+    <button class="tab-btn" onclick="showTab('nutrilite')">💊 Nutrilite</button>
+    <button class="tab-btn" onclick="showTab('artistry')">✨ Artistry</button>
+    <button class="tab-btn" onclick="showTab('xs')">⚡ XS</button>
+    <button class="tab-btn" onclick="showTab('home')">🏡 Home</button>
+    <button class="tab-btn" onclick="showTab('espring')">💧 eSpring</button>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+  <!-- ALL / NUTRILITE -->
+  <div class="section active" id="tab-all">
+
+    <!-- NUTRILITE HEADER -->
+    <div class="section-header" style="margin-top:8px;">
+      <div class="section-icon" style="background:#e8f5ef;">💊</div>
+      <div>
+        <div class="card-brand">Nutrilite</div>
+        <div class="section-title" style="color:var(--green);">อาหารเสริม</div>
+      </div>
+    </div>
+
+    <!-- Probiotic Mind -->
+    <div class="promo-card">
+      <div class="card-header">
+        <div>
+          <div class="card-brand">Nutrilite</div>
+          <div class="card-title">โพรไบโอติก มายด์</div>
+        </div>
+        <div class="discount-badge free-badge">ฟรีของขวัญ</div>
+      </div>
+      <div class="card-body">
+        <div class="price-row">
+          <span class="price-new">3,300</span>
+          <span class="price-unit">บาท / 2 ชิ้น</span>
+        </div>
+        <div class="gift-row">
+          <span class="gift-icon">🎁</span>
+          <span class="gift-text">ฟรี! ถุงหอม Panpuri by Nutrilite มูลค่า 590 บาท<br>เลือกกลิ่น Andaman Sails หรือ Siamese Water</span>
+        </div>
+        <ul class="detail-list">
+          <li>ซื้อ 2 ชิ้น รวม 3,300 บาท</li>
+          <li>ถุงหอมปรับอากาศ ขนาด 40 กรัม</li>
+          <li>เม็ดหิน ภูเขาไฟธรรมชาติ ความหอมผ่อนคลาย</li>
+        </ul>
+      </div>
+      <div class="card-footer">
+        <span class="period-tag">25 มิ.ย. – 31 ก.ค. 69</span>
+        <span class="apoint-tag">A Point 2×</span>
+      </div>
+    </div>
+
+    <!-- Triple Omega -->
+    <div class="promo-card">
+      <div class="card-header">
+        <div>
+          <div class="card-brand">Nutrilite</div>
+          <div class="card-title">ทริปเปิล โอเมก้า</div>
+        </div>
+        <div class="discount-badge">ลด 15%</div>
+      </div>
+      <div class="card-body">
+        <div class="price-row">
+          <span class="price-new">1,650</span>
+          <span class="price-old">1,950</span>
+          <span class="price-unit">บาท / 2 ชิ้น</span>
+        </div>
+        <ul class="detail-list">
+          <li>ซื้อ 2 ชิ้น เพียง 1,650 บาท (เพียงขวดละ 825 บาท)</li>
+          <li>ประหยัดทันที 300 บาท</li>
+          <li>P511 B1650</li>
+        </ul>
+      </div>
+      <div class="card-footer">
+        <span class="period-tag">4 มิ.ย. – 30 มิ.ย. 69</span>
+      </div>
+    </div>
+
+    <!-- Garlic -->
+    <div class="promo-card">
+      <div class="card-header">
+        <div>
+          <div class="card-brand">Nutrilite</div>
+          <div class="card-title">การ์ลิค (กระเทียมอัดเม็ด)</div>
+        </div>
+        <div class="discount-badge">ลด 24%</div>
+      </div>
+      <div class="card-body">
+        <div class="price-row">
+          <span class="price-new">1,800</span>
+          <span class="price-old">2,390</span>
+          <span class="price-unit">บาท / 2 ชิ้น</span>
+        </div>
+        <ul class="detail-list">
+          <li>ซื้อ 2 ชิ้น เพียง 1,800 บาท</li>
+          <li>ประหยัดสูงสุด 590 บาท</li>
+          <li>P557 B1800</li>
+        </ul>
+      </div>
+      <div class="card-footer">
+        <span class="period-tag">4 มิ.ย. – 30 มิ.ย. 69</span>
+      </div>
+    </div>
+
+    <!-- ARTISTRY HEADER -->
+    <div class="section-header" style="margin-top:12px;">
+      <div class="section-icon" style="background:#fdf0f5;">✨</div>
+      <div>
+        <div class="card-brand">Artistry</div>
+        <div class="section-title" style="color:var(--pink);">สกินแคร์</div>
+      </div>
+    </div>
+
+    <!-- Artistry Skincare set -->
+    <div class="promo-card">
+      <div class="card-header">
+        <div>
+          <div class="card-brand">Artistry Skin Nutrition</div>
+          <div class="card-title">ซื้อสกินแคร์ครบ 6,000 บาท</div>
+        </div>
+        <div class="discount-badge free-badge">ฟรีของกิ๊ฟ</div>
+      </div>
+      <div class="card-body">
+        <div class="gift-row">
+          <span class="gift-icon">🪨</span>
+          <span class="gift-text">ต่อที่ 1: ฟรี! อาร์ทิสทรี เฟเชียล มาสสาจ เซต มูลค่า 2,490 บาท</span>
+        </div>
+        <div class="gift-row">
+          <span class="gift-icon">🛏️</span>
+          <span class="gift-text">ต่อที่ 2: ผ้าห่มนวม อาร์ทิสทรี แลกซื้อเพียง 900 บาท (ปกติ 6,500 บาท)</span>
+        </div>
+        <ul class="detail-list">
+          <li>เลือกผ้าห่ม 4 สี: ซิลเวอร์ เกรย์ / ยูโรเปี้ยน ไวท์ / เซจ กรีน / บราวน์ โทป</li>
+          <li>เส้นใย Tencel 500 เส้นด้าย นุ่มลื่น</li>
+        </ul>
+      </div>
+      <div class="card-footer">
+        <span class="period-tag">15 มิ.ย. – 15 ก.ค. 69</span>
+        <span class="apoint-tag">A Point 2×</span>
+      </div>
+    </div>
+
+    <!-- Brightening Vit C Mask -->
+    <div class="promo-card">
+      <div class="card-header">
+        <div>
+          <div class="card-brand">Artistry Skin Nutrition</div>
+          <div class="card-title">Brightening Vitamin C+ Gel Mask</div>
+        </div>
+        <div class="discount-badge">2 โปร</div>
+      </div>
+      <div class="card-body">
+        <div style="background:#fff8f0; border-radius:10px; padding:10px 12px; margin-bottom:8px;">
+          <div style="font-size:12px; font-weight:700; color:#e8753a; margin-bottom:4px;">โปรโมชั่น 1</div>
+          <div style="font-size:13px; color:#333;">ซื้อ 2 กล่อง รวม 1,980 บาท → ฟรี! 2 ซอง มูลค่า 396 บาท</div>
+        </div>
+        <div style="background:#f0f9ff; border-radius:10px; padding:10px 12px;">
+          <div style="font-size:12px; font-weight:700; color:var(--teal); margin-bottom:4px;">โปรโมชั่น 2</div>
+          <div style="font-size:13px; color:#333;">ซื้อ Gel Mask 1 กล่อง + Vitamin C HA3 Daily Serum 1 ชิ้น<br>เพียง <strong>2,456 บาท</strong> (ลด 15% จากปกติ 2,890 บาท)</div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="period-tag">4 มิ.ย. – 30 มิ.ย. 69</span>
+        <span class="apoint-tag">A Point 2×</span>
+      </div>
+    </div>
+
+    <!-- XS HEADER -->
+    <div class="section-header" style="margin-top:12px;">
+      <div class="section-icon" style="background:#fff3e0;">⚡</div>
+      <div>
+        <div class="card-brand">XS</div>
+        <div class="section-title" style="color:#e65100;">เครื่องดื่ม & ฟิตเนส</div>
+      </div>
+    </div>
+
+    <!-- XS Ignite Lite -->
+    <div class="promo-card">
+      <div class="card-header">
+        <div>
+          <div class="card-brand">XS</div>
+          <div class="card-title">Ignite Lite Powder</div>
+        </div>
+        <div class="discount-badge free-badge">ซื้อ 2 ฟรี 1</div>
+      </div>
+      <div class="card-body">
+        <div class="price-row">
+          <span class="price-new">2,100</span>
+          <span class="price-unit">บาท / 2 กล่อง</span>
+        </div>
+        <div class="gift-row">
+          <span class="gift-icon">🎁</span>
+          <span class="gift-text">ฟรี! อีก 1 กล่อง มูลค่า 1,050 บาท</span>
+        </div>
+        <ul class="detail-list">
+          <li>P650 B2100</li>
+          <li>Blood Orange Extract & L-Glutamine</li>
+        </ul>
+      </div>
+      <div class="card-footer">
+        <span class="period-tag">4 มิ.ย. – 30 มิ.ย. 69</span>
+      </div>
+    </div>
+
+    <!-- XS Energy Drink -->
+    <div class="promo-card">
+      <div class="card-header">
+        <div>
+          <div class="card-brand">XS Energy Drink</div>
+          <div class="card-title">เครื่องดื่มชูกำลัง XS</div>
+        </div>
+        <div class="discount-badge">ลด 325 บาท</div>
+      </div>
+      <div class="card-body">
+        <div style="display:flex; gap:8px; margin-bottom:10px;">
+          <div style="flex:1; background:#fff8f0; border-radius:10px; padding:10px;">
+            <div style="font-size:11px; font-weight:700; color:#e8753a; margin-bottom:4px;">แพ็ก 24 กระป๋อง</div>
+            <div style="font-family:'Kanit',sans-serif; font-size:18px; font-weight:800; color:var(--coral);">975 บาท</div>
+            <div style="font-size:11px; color:var(--muted); text-decoration:line-through;">1,300 บาท</div>
+          </div>
+          <div style="flex:1; background:#fff0f5; border-radius:10px; padding:10px;">
+            <div style="font-size:11px; font-weight:700; color:var(--pink); margin-bottom:4px;">ซื้อ 3 แพ็ก (6 กระป๋อง)</div>
+            <div style="font-family:'Kanit',sans-serif; font-size:16px; font-weight:800; color:var(--coral);">ฟรี! 1 แพ็ก</div>
+            <div style="font-size:11px; color:var(--muted);">มูลค่า 325 บาท</div>
+          </div>
+        </div>
+        <ul class="detail-list">
+          <li>กลิ่น Cranberry-Grape หรือ Ignite กลิ่น Pink Grapefruit</li>
+        </ul>
+      </div>
+      <div class="card-footer">
+        <span class="period-tag">4 มิ.ย. – 30 มิ.ย. 69</span>
+      </div>
+    </div>
+
+    <!-- HOME HEADER -->
+    <div class="section-header" style="margin-top:12px;">
+      <div class="section-icon" style="background:#f0f7ff;">🏡</div>
+      <div>
+        <div class="card-brand">Amway Home & Glister</div>
+        <div class="section-title" style="color:var(--teal);">ของใช้ในบ้าน</div>
+      </div>
+    </div>
+
+    <!-- Glister + Home -->
+    <div class="promo-card">
+      <div class="card-header">
+        <div>
+          <div class="card-brand">Glister + Amway Home</div>
+          <div class="card-title">โปรโมชั่นพิเศษ ทั้งคลีน ทั้งคุ้ม</div>
+        </div>
+        <div class="discount-badge" style="background:var(--teal);">ลด 80 บาท</div>
+      </div>
+      <div class="card-body">
+        <div style="background:#f0f9ff; border-radius:10px; padding:10px 12px; margin-bottom:8px;">
+          <div style="font-size:12px; font-weight:700; color:var(--teal); margin-bottom:4px;">Glister ยาสีฟัน</div>
+          <div style="font-size:13px; color:#333;">ซื้อ 2 ชิ้น (ขนาด 200 กรัม) เพียง 438–474 บาท (ปกติ 518–554 บาท)<br>เลือก 3 สูตร: มินท์ / ไวท์ที / เชอร์บิลส์</div>
+        </div>
+        <div style="background:#f0fff4; border-radius:10px; padding:10px 12px;">
+          <div style="font-size:12px; font-weight:700; color:var(--green); margin-bottom:4px;">Amway Home Everyday Set</div>
+          <div style="font-size:13px; color:#333;">แลกซื้อ 1 ชุด เพียง 975 บาท (ปกติ 1,150 บาท) ลด 15%<br>ประกอบด้วย SA8 / Dish Drops / LOC</div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="period-tag">4 มิ.ย. – 30 มิ.ย. 69</span>
+      </div>
+    </div>
+
+    <!-- Car Wash -->
+    <div class="promo-card">
+      <div class="card-header">
+        <div>
+          <div class="card-brand">Amway</div>
+          <div class="card-title">Car Wash แพ็กคู่</div>
+        </div>
+        <div class="discount-badge">ลด 84 บาท</div>
+      </div>
+      <div class="card-body">
+        <div class="price-row">
+          <span class="price-new">480</span>
+          <span class="price-old">564</span>
+          <span class="price-unit">บาท / 2 ขวด</span>
+        </div>
+        <ul class="detail-list">
+          <li>2 ชิ้นเพียง 480 บาท</li>
+          <li>ล้างรถเงาสวยแบบจัดเต็ม</li>
+        </ul>
+      </div>
+      <div class="card-footer">
+        <span class="period-tag">2 มิ.ย. – 30 มิ.ย. 69</span>
+      </div>
+    </div>
+
+    <!-- ESPRING HEADER -->
+    <div class="section-header" style="margin-top:12px;">
+      <div class="section-icon" style="background:#e8f4ff;">💧</div>
+      <div>
+        <div class="card-brand">eSpring</div>
+        <div class="section-title" style="color:#1a6fa0;">เครื่องกรองน้ำ</div>
+      </div>
+    </div>
+
+    <!-- eSpring Filter -->
+    <div class="promo-card">
+      <div class="card-header">
+        <div>
+          <div class="card-brand">eSpring</div>
+          <div class="card-title">เปลี่ยนไส้กรองแท้ ราคาพิเศษ</div>
+        </div>
+        <div class="discount-badge" style="background:#1a6fa0;">ลดสูงสุด 792 บาท</div>
+      </div>
+      <div class="card-body">
+        <div style="display:flex; gap:8px; margin-bottom:10px;">
+          <div style="flex:1; background:#e8f4ff; border-radius:10px; padding:10px;">
+            <div style="font-size:11px; font-weight:700; color:#1a6fa0; margin-bottom:4px;">ชุด UV + คาร์บอน</div>
+            <div style="font-family:'Kanit',sans-serif; font-size:18px; font-weight:800; color:#1a6fa0;">4,290 บาท</div>
+            <div style="font-size:11px; color:var(--muted); text-decoration:line-through;">5,082 บาท</div>
+          </div>
+          <div style="flex:1; background:#e8f4ff; border-radius:10px; padding:10px;">
+            <div style="font-size:11px; font-weight:700; color:#1a6fa0; margin-bottom:4px;">ชุดไส้กรอง e3</div>
+            <div style="font-family:'Kanit',sans-serif; font-size:18px; font-weight:800; color:#1a6fa0;">4,290 บาท</div>
+            <div style="font-size:11px; color:var(--muted); text-decoration:line-through;">5,000 บาท</div>
+          </div>
+        </div>
+        <div class="gift-row">
+          <span class="gift-icon">💳</span>
+          <span class="gift-text">ผ่อน 0% นาน 4 เดือน กับบัตรที่ร่วมรายการ</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="period-tag">15 มิ.ย. – 15 ก.ค. 69</span>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-section">
+      <div class="cta-title">สนใจโปรไหน? 💬</div>
+      <div class="cta-sub">ทักมาได้เลยนะคะ ดีว่าช่วยแนะนำได้</div>
+      <a href="https://line.me/" class="cta-btn">ทักไลน์เลย</a>
+    </div>
+
+  </div><!-- /tab-all -->
+
+  <!-- NUTRILITE TAB -->
+  <div class="section" id="tab-nutrilite">
+    <div class="section-header" style="margin-top:8px;">
+      <div class="section-icon" style="background:#e8f5ef;">💊</div>
+      <div><div class="section-title" style="color:var(--green);">Nutrilite อาหารเสริม</div></div>
+    </div>
+    <div class="promo-card">
+      <div class="card-header">
+        <div><div class="card-brand">Nutrilite</div><div class="card-title">โพรไบโอติก มายด์</div></div>
+        <div class="discount-badge free-badge">ฟรีของขวัญ</div>
+      </div>
+      <div class="card-body">
+        <div class="price-row"><span class="price-new">3,300</span><span class="price-unit">บาท / 2 ชิ้น</span></div>
+        <div class="gift-row"><span class="gift-icon">🎁</span><span class="gift-text">ฟรี! ถุงหอม Panpuri มูลค่า 590 บาท (Andaman Sails / Siamese Water)</span></div>
+      </div>
+      <div class="card-footer"><span class="period-tag">25 มิ.ย. – 31 ก.ค. 69</span><span class="apoint-tag">A Point 2×</span></div>
+    </div>
+    <div class="promo-card">
+      <div class="card-header">
+        <div><div class="card-brand">Nutrilite</div><div class="card-title">ทริปเปิล โอเมก้า</div></div>
+        <div class="discount-badge">ลด 15%</div>
+      </div>
+      <div class="card-body">
+        <div class="price-row"><span class="price-new">1,650</span><span class="price-old">1,950</span><span class="price-unit">บาท / 2 ชิ้น</span></div>
+        <ul class="detail-list"><li>เพียงขวดละ 825 บาท · P511 B1650</li></ul>
+      </div>
+      <div class="card-footer"><span class="period-tag">4 มิ.ย. – 30 มิ.ย. 69</span></div>
+    </div>
+    <div class="promo-card">
+      <div class="card-header">
+        <div><div class="card-brand">Nutrilite</div><div class="card-title">การ์ลิค กระเทียมอัดเม็ด</div></div>
+        <div class="discount-badge">ลด 24%</div>
+      </div>
+      <div class="card-body">
+        <div class="price-row"><span class="price-new">1,800</span><span class="price-old">2,390</span><span class="price-unit">บาท / 2 ชิ้น</span></div>
+        <ul class="detail-list"><li>ประหยัด 590 บาท · P557 B1800</li></ul>
+      </div>
+      <div class="card-footer"><span class="period-tag">4 มิ.ย. – 30 มิ.ย. 69</span></div>
+    </div>
+  </div>
+
+  <!-- ARTISTRY TAB -->
+  <div class="section" id="tab-artistry">
+    <div class="section-header" style="margin-top:8px;">
+      <div class="section-icon" style="background:#fdf0f5;">✨</div>
+      <div><div class="section-title" style="color:var(--pink);">Artistry Skin Nutrition</div></div>
+    </div>
+    <div class="promo-card">
+      <div class="card-header">
+        <div><div class="card-brand">Artistry</div><div class="card-title">ซื้อสกินแคร์ครบ 6,000 บาท</div></div>
+        <div class="discount-badge free-badge">ฟรี + แลกซื้อ</div>
+      </div>
+      <div class="card-body">
+        <div class="gift-row"><span class="gift-icon">🪨</span><span class="gift-text">ฟรี! เฟเชียล มาสสาจ เซต (ลูกกลิ้งหินโรสควอตซ์ + แผ่นกัวซา) มูลค่า 2,490 บาท</span></div>
+        <div class="gift-row"><span class="gift-icon">🛏️</span><span class="gift-text">แลกซื้อผ้าห่มนวม 90×100 นิ้ว เพียง 900 บาท (ปกติ 6,500 บาท)</span></div>
+      </div>
+      <div class="card-footer"><span class="period-tag">15 มิ.ย. – 15 ก.ค. 69</span><span class="apoint-tag">A Point 2×</span></div>
+    </div>
+    <div class="promo-card">
+      <div class="card-header">
+        <div><div class="card-brand">Artistry Skin Nutrition</div><div class="card-title">Brightening Vit C+ Gel Mask</div></div>
+        <div class="discount-badge">2 โปร</div>
+      </div>
+      <div class="card-body">
+        <div style="background:#fff8f0;border-radius:10px;padding:10px 12px;margin-bottom:8px;">
+          <div style="font-size:12px;font-weight:700;color:#e8753a;margin-bottom:4px;">โปร 1</div>
+          <div style="font-size:13px;">ซื้อ 2 กล่อง → ฟรี! 2 ซอง มูลค่า 396 บาท</div>
+        </div>
+        <div style="background:#f0f9ff;border-radius:10px;padding:10px 12px;">
+          <div style="font-size:12px;font-weight:700;color:var(--teal);margin-bottom:4px;">โปร 2</div>
+          <div style="font-size:13px;">Gel Mask + Vit C HA3 Serum เพียง <strong>2,456 บาท</strong> (ลด 15%)</div>
+        </div>
+      </div>
+      <div class="card-footer"><span class="period-tag">4 มิ.ย. – 30 มิ.ย. 69</span><span class="apoint-tag">A Point 2×</span></div>
+    </div>
+  </div>
+
+  <!-- XS TAB -->
+  <div class="section" id="tab-xs">
+    <div class="section-header" style="margin-top:8px;">
+      <div class="section-icon" style="background:#fff3e0;">⚡</div>
+      <div><div class="section-title" style="color:#e65100;">XS Energy</div></div>
+    </div>
+    <div class="promo-card">
+      <div class="card-header">
+        <div><div class="card-brand">XS</div><div class="card-title">Ignite Lite Powder</div></div>
+        <div class="discount-badge free-badge">ซื้อ 2 ฟรี 1</div>
+      </div>
+      <div class="card-body">
+        <div class="price-row"><span class="price-new">2,100</span><span class="price-unit">บาท</span></div>
+        <div class="gift-row"><span class="gift-icon">🎁</span><span class="gift-text">ฟรี! อีก 1 กล่อง มูลค่า 1,050 บาท · P650 B2100</span></div>
+      </div>
+      <div class="card-footer"><span class="period-tag">4 มิ.ย. – 30 มิ.ย. 69</span></div>
+    </div>
+    <div class="promo-card">
+      <div class="card-header">
+        <div><div class="card-brand">XS Energy Drink</div><div class="card-title">เครื่องดื่มชูกำลัง</div></div>
+        <div class="discount-badge">ลด 325 บาท</div>
+      </div>
+      <div class="card-body">
+        <div style="display:flex;gap:8px;">
+          <div style="flex:1;background:#fff8f0;border-radius:10px;padding:10px;">
+            <div style="font-size:11px;font-weight:700;color:#e8753a;margin-bottom:2px;">แพ็ก 24 กระป๋อง</div>
+            <div style="font-family:'Kanit',sans-serif;font-size:20px;font-weight:800;color:var(--coral);">975 บาท</div>
+            <div style="font-size:11px;color:var(--muted);text-decoration:line-through;">1,300 บาท</div>
+          </div>
+          <div style="flex:1;background:#fff0f5;border-radius:10px;padding:10px;">
+            <div style="font-size:11px;font-weight:700;color:var(--pink);margin-bottom:2px;">แพ็ก 6 กระป๋อง</div>
+            <div style="font-family:'Kanit',sans-serif;font-size:16px;font-weight:800;color:var(--coral);">ซื้อ 3 ฟรี 1</div>
+            <div style="font-size:11px;color:var(--muted);">แพ็ก มูลค่า 325 บาท</div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><span class="period-tag">4 มิ.ย. – 30 มิ.ย. 69</span></div>
+    </div>
+  </div>
+
+  <!-- HOME TAB -->
+  <div class="section" id="tab-home">
+    <div class="section-header" style="margin-top:8px;">
+      <div class="section-icon" style="background:#f0f7ff;">🏡</div>
+      <div><div class="section-title" style="color:var(--teal);">Amway Home & Glister</div></div>
+    </div>
+    <div class="promo-card">
+      <div class="card-header">
+        <div><div class="card-brand">Glister</div><div class="card-title">ยาสีฟัน ซื้อ 2 ชิ้น</div></div>
+        <div class="discount-badge" style="background:var(--teal);">ลด 80 บาท</div>
+      </div>
+      <div class="card-body">
+        <div class="price-row"><span class="price-new">438–474</span><span class="price-old">518–554</span><span class="price-unit">บาท</span></div>
+        <ul class="detail-list"><li>ขนาด 200 กรัม เลือก 3 สูตร: มินท์ / ไวท์ที / เชอร์บิลส์</li></ul>
+      </div>
+      <div class="card-footer"><span class="period-tag">4 มิ.ย. – 30 มิ.ย. 69</span></div>
+    </div>
+    <div class="promo-card">
+      <div class="card-header">
+        <div><div class="card-brand">Amway Home</div><div class="card-title">Everyday Set แลกซื้อ</div></div>
+        <div class="discount-badge" style="background:var(--teal);">ลด 15%</div>
+      </div>
+      <div class="card-body">
+        <div class="price-row"><span class="price-new">975</span><span class="price-old">1,150</span><span class="price-unit">บาท</span></div>
+        <ul class="detail-list">
+          <li>SA8 Liquid Laundry Detergent</li>
+          <li>Dish Drops ล้างจาน</li>
+          <li>LOC Multi-Purpose Cleaner</li>
+        </ul>
+      </div>
+      <div class="card-footer"><span class="period-tag">4 มิ.ย. – 30 มิ.ย. 69</span></div>
+    </div>
+    <div class="promo-card">
+      <div class="card-header">
+        <div><div class="card-brand">Amway</div><div class="card-title">Car Wash แพ็กคู่</div></div>
+        <div class="discount-badge">ลด 84 บาท</div>
+      </div>
+      <div class="card-body">
+        <div class="price-row"><span class="price-new">480</span><span class="price-old">564</span><span class="price-unit">บาท / 2 ขวด</span></div>
+      </div>
+      <div class="card-footer"><span class="period-tag">2 มิ.ย. – 30 มิ.ย. 69</span></div>
+    </div>
+  </div>
+
+  <!-- ESPRING TAB -->
+  <div class="section" id="tab-espring">
+    <div class="section-header" style="margin-top:8px;">
+      <div class="section-icon" style="background:#e8f4ff;">💧</div>
+      <div><div class="section-title" style="color:#1a6fa0;">eSpring เครื่องกรองน้ำ</div></div>
+    </div>
+    <div class="promo-card">
+      <div class="card-header">
+        <div><div class="card-brand">eSpring</div><div class="card-title">ชุดไส้กรอง UV + คาร์บอน</div></div>
+        <div class="discount-badge" style="background:#1a6fa0;">ลด 792 บาท</div>
+      </div>
+      <div class="card-body">
+        <div class="price-row"><span class="price-new">4,290</span><span class="price-old">5,082</span><span class="price-unit">บาท</span></div>
+        <div class="gift-row"><span class="gift-icon">💳</span><span class="gift-text">ผ่อน 0% นาน 4 เดือน · P1328 B4290</span></div>
+      </div>
+      <div class="card-footer"><span class="period-tag">15 มิ.ย. – 15 ก.ค. 69</span></div>
+    </div>
+    <div class="promo-card">
+      <div class="card-header">
+        <div><div class="card-brand">eSpring</div><div class="card-title">ชุดไส้กรอง e3</div></div>
+        <div class="discount-badge" style="background:#1a6fa0;">ลด 710 บาท</div>
+      </div>
+      <div class="card-body">
+        <div class="price-row"><span class="price-new">4,290</span><span class="price-old">5,000</span><span class="price-unit">บาท</span></div>
+        <div class="gift-row"><span class="gift-icon">💳</span><span class="gift-text">ผ่อน 0% นาน 4 เดือน · P1328 B4290</span></div>
+      </div>
+      <div class="card-footer"><span class="period-tag">15 มิ.ย. – 15 ก.ค. 69</span></div>
+    </div>
+  </div>
+
+</div><!-- /content -->
+
+<script>
+function showTab(tab) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + tab).classList.add('active');
+  event.target.classList.add('active');
+}
+</script>
+</body>
+</html>
